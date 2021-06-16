@@ -22,7 +22,7 @@ const Expenses = (props) => {
         // console.log(expense);
         return (
           <ExpenseItem
-            key={expense.id5t}
+            key={expense.id}
             date={expense.date}
             title={expense.title}
             amount={expense.amount}
