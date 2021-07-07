@@ -2,9 +2,7 @@ import React from "react";
 
 const GoalForm = () => {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-6 offset-3">
+
           <form>
             <div className="form-group">
               <label for="exampleInputEmail1">Enter your Goal</label>
