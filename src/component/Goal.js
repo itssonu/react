@@ -2,7 +2,7 @@ import React from "react";
 
 const Goal = () => {
   return (
-    <ul class="list-group">
+    <ul class="list-group mt-5">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
