@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import GoalForm from "./component/GoalForm.js";
+import Goal from "./component/Goal.js";
 function App() {
   return (
     // <div className="App">
@@ -19,7 +20,10 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <GoalForm />
+    <>
+      <GoalForm />
+      <Goal />
+    </>
   );
 }
 
