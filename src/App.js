@@ -18,7 +18,6 @@ function App() {
   const [goalData, setGoalData] = useState(initialGoalData);
 
   const addGoalHandler = (singleGoalData) => {
-    // console.log(singleGoalData);
     setGoalData((prevGoalData) => {
       console.log(prevGoalData);
       return [singleGoalData, ...prevGoalData];
