@@ -1,13 +1,13 @@
 import React from "react";
 
-const Goal = () => {
+const Goal = (props) => {
   return (
-    <ul class="list-group mt-5">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
+    <ul className="list-group mt-5">
+      {props.goalData.map((v) => (
+        <li key={v.id} className="list-group-item">
+          {v.goal}
+        </li>
+      ))}
     </ul>
   );
 };
