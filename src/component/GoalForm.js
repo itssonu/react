@@ -29,6 +29,7 @@ const GoalForm = (props) => {
           className="form-control"
           id="goal"
           placeholder="Enter Goal"
+          value={addGoal}
           onChange={goalChangeHandler}
         />
       </div>
