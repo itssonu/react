@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 const GoalForm = (props) => {
@@ -29,6 +29,13 @@ const GoalForm = (props) => {
 
     goalInputref.current.value = "";
   };
+
+  useEffect(() => {
+    console.log("effect running");
+    return () => {
+      console.log("effect cleanup");
+    };
+  });
 
   const ErrorModal = () => {
     return (
