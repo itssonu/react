@@ -1,5 +1,4 @@
 function App() {
-  // alert(process.env.PUBLIC_URL);
   return (
     <div className="wrapper">
       {/* Preloader */}
