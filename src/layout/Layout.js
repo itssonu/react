@@ -15,7 +15,7 @@ const Layout = () => {
       {/* Main Sidebar Container */}
       <Sidebar />
       {/* Content Wrapper. Contains page content */}
-      <ContentWrapper />
+      <div className="content-wrapper">{props.children}</div>
       {/* /.content-wrapper */}
       <Footer />
     </div>
