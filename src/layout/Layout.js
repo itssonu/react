@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar.js";
 import ContentWrapper from "./ContentWrapper.js";
 import Preloader from "./Preloader.js";
 
-const Layout = () => {
+const Layout = (props) => {
   return (
     <div className="wrapper">
       {/* Preloader */}
