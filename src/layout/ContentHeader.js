@@ -1,9 +1,6 @@
 import React from "react";
 
 const ContentHeader = (props) => {
-  // const breadcrumb = {
-
-  // };
   return (
     <div>
       {/* Content Header (Page header) */}
@@ -18,7 +15,12 @@ const ContentHeader = (props) => {
                 <li className="breadcrumb-item">
                   <a href="fake_url">Home</a>
                 </li>
-                <li className="breadcrumb-item active">DataTables</li>
+                {props.breadcrumb.map((v, k) => (
+                  <li key={k} className="breadcrumb-item">
+                    <a href={v.url}>{v.title}</a>
+                  </li>
+                ))}
+                <li className="breadcrumb-item active">{props.name}</li>
               </ol>
             </div>
           </div>

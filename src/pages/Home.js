@@ -1,11 +1,21 @@
 import React from "react";
-import Layout from "./Layout.js";
-import ContentHeader from "./ContentHeader.js";
+import Layout from "../layout/Layout.js";
+import ContentHeader from "../layout/ContentHeader.js";
 
 const Home = () => {
+  const breadcrumb = [
+    {
+      title: "goal1",
+      url: "first",
+    },
+    {
+      title: "goal2",
+      url: "second",
+    },
+  ];
   return (
     <Layout>
-      <ContentHeader name="Home" breadcrumb="" />
+      <ContentHeader name="Home" breadcrumb={breadcrumb} />
       {/* Main content */}
       <section className="content">
         <div className="container-fluid">
