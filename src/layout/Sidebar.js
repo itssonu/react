@@ -73,7 +73,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/a">
+                <Link className="nav-link" to="/home2">
                   <i className="nav-icon fas fa-th"></i>
                   Home2
                 </Link>

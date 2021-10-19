@@ -5,14 +5,16 @@ import Home2 from "./pages/Home2.js";
 
 const Routes = () => {
   return (
-    <Switch>
-      <Route path="/">
-        <Home />
-      </Route>
-      <Route path="/a">
-        <Home2 />
-      </Route>
-    </Switch>
+    <>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/home2" exact>
+          <Home2 />
+        </Route>
+      </Switch>
+    </>
   );
 };
 export default Routes;
