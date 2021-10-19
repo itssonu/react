@@ -73,6 +73,12 @@ const Sidebar = () => {
                     Home
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/acsd">
+                    <i class="nav-icon fas fa-th"></i>
+                    Home2
+                  </Link>
+                </li>
               </ul>
             </nav>
             {/* /.sidebar-menu */}
