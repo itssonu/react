@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../layout/Layout.js";
 import ContentHeader from "../layout/ContentHeader.js";
 
 const Home = () => {
@@ -14,7 +13,7 @@ const Home = () => {
     },
   ];
   return (
-    <Layout>
+    <>
       <ContentHeader name="Home" breadcrumb={breadcrumb} />
       {/* Main content */}
       <section className="content">
@@ -80,7 +79,7 @@ const Home = () => {
         {/* /.container-fluid */}
       </section>
       {/* /.content */}
-    </Layout>
+    </>
   );
 };
 export default Home;
