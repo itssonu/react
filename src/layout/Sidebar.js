@@ -69,13 +69,13 @@ const Sidebar = () => {
          with font-awesome or any other icon font library */}
                 <li className="nav-item">
                   <Link className="nav-link" to="/">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i className="nav-icon fas fa-th"></i>
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/acsd">
-                    <i class="nav-icon fas fa-th"></i>
+                  <Link className="nav-link" to="/home2">
+                    <i className="nav-icon fas fa-th"></i>
                     Home2
                   </Link>
                 </li>
