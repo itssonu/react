@@ -1,7 +1,7 @@
 import Footer from "./Footer.js";
 import Navbar from "./Navbar.js";
 import Sidebar from "./Sidebar.js";
-import ContentWrapper from "./ContentWrapper.js";
+// import ContentWrapper from "./ContentWrapper.js";
 import Preloader from "./Preloader.js";
 
 const Layout = (props) => {
