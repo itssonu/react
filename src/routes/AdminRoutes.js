@@ -8,7 +8,10 @@ const AdminRoutes = () => {
   return (
     <>
       <Switch>
-        <Route path={`${path}/dashboard/`} exact>
+        <Route path={`${path}/dashboard`} exact>
+          <h1>Admin Dashboard</h1>
+        </Route>
+        <Route path={`${path}`} exact>
           <h1>Admin Dashboard</h1>
         </Route>
         <Route path={`${path}/crud`} exact>

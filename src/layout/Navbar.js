@@ -17,7 +17,7 @@ const Navbar = () => {
               <i className="fas fa-bars" />
             </a>
           </li>
-          <li className="nav-item d-none d-sm-inline-block">
+          {/* <li className="nav-item d-none d-sm-inline-block">
             <a href="index3.html" className="nav-link">
               Home
             </a>
@@ -26,7 +26,7 @@ const Navbar = () => {
             <a href="fake_url" className="nav-link">
               Contact
             </a>
-          </li>
+          </li> */}
         </ul>
         {/* Right navbar links */}
         <ul className="navbar-nav ml-auto">
