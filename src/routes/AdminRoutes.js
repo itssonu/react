@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 // import Home from "../pages/Home";
 // import Home2 from "../pages/Home2";
+import CrudIndex from "../pages/crud/index";
 
 const AdminRoutes = () => {
   let { path } = useRouteMatch();
@@ -15,7 +16,7 @@ const AdminRoutes = () => {
           <h1>Admin Dashboard</h1>
         </Route>
         <Route path={`${path}/crud`} exact>
-          <h1>Admin crud</h1>
+          <CrudIndex />
         </Route>
         <Route>
           <h1>Admin Not Found</h1>
