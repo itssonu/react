@@ -1,4 +1,6 @@
 import ContentHeader from "../../layout/ContentHeader";
+import CrudController from "../../controller/CrudController";
+import { useEffect, useState } from "react";
 
 const Index = () => {
   const breadcrumb = [
@@ -7,6 +9,27 @@ const Index = () => {
     //   url: "index",
     // },
   ];
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    CrudController.home()
+      .then((res) => {
+        if (res.data.status_code === 200) {
+          setData(res.data.categories);
+          console.log(data);
+        }
+      })
+      .catch((err) => {
+        console.log("error");
+      })
+      .finally(() => {
+        console.log("finally");
+      });
+  }, []);
+
+  //   console.log(CrudController.home());
+
   return (
     <>
       <ContentHeader name="Crud" breadcrumb={breadcrumb} />
@@ -34,19 +57,16 @@ const Index = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td>Win 95+</td>
-                        <td>X</td>
-                      </tr>
-
-                      <tr>
-                        <td>2</td>
-                        <td>All others</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
+                      {/* {data.map((v) => {
+                        return (
+                          <tr>
+                            <td>1</td>
+                            <td>Internet Explorer 4.0</td>
+                            <td>Win 95+</td>
+                            <td>X</td>
+                          </tr>
+                        );
+                      })} */}
                     </tbody>
                     <tfoot>
                       <tr>
