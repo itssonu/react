@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
 const Sidebar = () => {
-  let { url } = useRouteMatch();
+  let match = useRouteMatch();
 
   return (
     <>
@@ -69,13 +69,13 @@ const Sidebar = () => {
               {/* Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library */}
               <li className="nav-item">
-                <Link className="nav-link" to={`${url}dashboard`}>
+                <Link className="nav-link" to={`${match.path}/dashboard`}>
                   <i className="nav-icon fas fa-th"></i>
                   Dashboard
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={`${url}crud`}>
+                <Link className="nav-link" to={`${match.path}/crud`}>
                   <i className="nav-icon fas fa-th"></i>
                   Crud
                 </Link>

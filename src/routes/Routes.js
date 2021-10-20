@@ -10,10 +10,14 @@ const Routes = () => {
         <Route path="/" exact>
           <h1>web</h1>
         </Route>
-        <Route path="/admin" exact>
+
+        <Route path="/admin">
           <AdminLayout>
             <AdminRoutes />
           </AdminLayout>
+        </Route>
+        <Route>
+          <h1>web not found</h1>
         </Route>
       </Switch>
     </>
