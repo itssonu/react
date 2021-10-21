@@ -2,13 +2,14 @@ import ContentHeader from "../../layout/ContentHeader";
 import CrudController from "../../controller/CrudController";
 import { useEffect, useState } from "react";
 
-const Index = () => {
+const Index = (props) => {
   const breadcrumb = [
     // {
     //   title: "index",
     //   url: "index",
     // },
   ];
+
   const getAllBlogs = () => {
     CrudController.getAllBlogs()
       .then((res) => {
@@ -31,6 +32,10 @@ const Index = () => {
   }, []);
 
   //   console.log(CrudController.home());
+
+  if (props.isBlogMenuClicked) {
+    getAllBlogs();
+  }
 
   return (
     <>

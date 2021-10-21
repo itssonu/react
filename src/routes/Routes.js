@@ -4,6 +4,9 @@ import AdminLayout from "../layout/AdminLayout.js";
 import AdminRoutes from "./AdminRoutes.js";
 
 const Routes = () => {
+  const blogMenuClickHandler = (props) => {
+    console.log("onrotes");
+  };
   return (
     <>
       <Switch>
@@ -12,7 +15,7 @@ const Routes = () => {
         </Route>
 
         <Route path="/admin">
-          <AdminLayout>
+          <AdminLayout blogMenuClickHandler={blogMenuClickHandler}>
             <AdminRoutes />
           </AdminLayout>
         </Route>

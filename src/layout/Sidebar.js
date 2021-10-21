@@ -5,7 +5,8 @@ const Sidebar = (props) => {
   let match = useRouteMatch();
 
   const blogMenuClickHandler = () => {
-    alert("click");
+    console.log("blog menu clicked at sidebar");
+    // alert("click");
     props.blogMenuClickHandler();
   };
 
