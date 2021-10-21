@@ -1,5 +1,5 @@
 import ContentHeader from "../../layout/ContentHeader";
-import CrudController from "../../controller/CrudController";
+import BlogController from "../../controller/CrudController";
 import { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const Index = (props) => {
   ];
 
   const getAllBlogs = () => {
-    CrudController.getAllBlogs()
+    BlogController.getAllBlogs()
       .then((res) => {
         if (res.data.status_code === 200) {
           res = res.data.data;

@@ -1,9 +1,12 @@
 import http from "../http/http";
 
-class CrudController {
+class BlogController {
   getAllBlogs() {
     return http.get("/blogs");
   }
+  addBlog(postData) {
+    return http.post("/addBlog", postData);
+  }
 }
 
-export default new CrudController();
+export default new BlogController();
