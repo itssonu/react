@@ -1,8 +1,10 @@
 import ContentHeader from "../../layout/ContentHeader";
 import CrudController from "../../controller/CrudController";
 import { useEffect, useState } from "react";
+import { Link, useRouteMatch } from "react-router-dom";
 
 const Index = (props) => {
+  let match = useRouteMatch();
   const breadcrumb = [
     // {
     //   title: "index",
@@ -48,6 +50,11 @@ const Index = (props) => {
               <div className="card">
                 <div className="card-header">
                   <h3 className="card-title">All Blog</h3>
+                  <Link className="float-right" to={`${match.path}/add`}>
+                    <button type="button" className="btn btn-success">
+                      <i className="fas fa-plus addButton"></i>
+                    </button>
+                  </Link>
                 </div>
                 {/* /.card-header */}
                 <div className="card-body">

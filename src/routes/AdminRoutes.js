@@ -7,15 +7,22 @@ const AdminRoutes = (props) => {
   return (
     <>
       <Switch>
+        <Route path={`${path}/blog`} exact>
+          <Route path={`${path}`}>
+            <BlogIndex isBlogMenuClicked={props.isBlogMenuClicked} />
+          </Route>
+          <Route path={`${path}/add`} exact>
+            {/* <BlogAdd /> */}
+            <h1>cvdchvdsjch</h1>
+          </Route>
+        </Route>
         <Route path={`${path}/dashboard`} exact>
           <h1>Admin Dashboard</h1>
         </Route>
         <Route path={`${path}`} exact>
           <h1>Admin Dashboard</h1>
         </Route>
-        <Route path={`${path}/blog`} exact>
-          <BlogIndex isBlogMenuClicked={props.isBlogMenuClicked} />
-        </Route>
+
         <Route>
           <h1>Admin Not Found</h1>
         </Route>
