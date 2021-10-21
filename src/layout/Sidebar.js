@@ -75,7 +75,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={`${match.path}/crud`}>
+                <Link className="nav-link" to={`${match.path}/blog`}>
                   <i className="nav-icon fas fa-th"></i>
                   Crud
                 </Link>
