@@ -4,11 +4,12 @@ import BlogIndex from "../pages/blog/index";
 import BlogAdd from "../pages/blog/Add";
 import BlogController from "../controller/CrudController";
 import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const AdminRoutes = (props) => {
   let { path } = useRouteMatch();
 
-  // const MySwal = withReactContent(Swal);
+  const MySwal = withReactContent(Swal);
 
   const addBlog = (postData) => {
     BlogController.addBlog(postData)
@@ -16,7 +17,7 @@ const AdminRoutes = (props) => {
         if (res.data.status_code === 200) {
           res = res.data.data;
           console.log(res);
-          Swal.fire({
+          MySwal.fire({
             title: <strong>Good job!</strong>,
             html: <i>You clicked the button!</i>,
             icon: "success",
