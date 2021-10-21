@@ -1,8 +1,8 @@
 import http from "../http/http";
 
 class CrudController {
-  home() {
-    return http.get("/home");
+  getAllBlogs() {
+    return http.get("/blogs");
   }
 }
 

@@ -10,14 +10,15 @@ const Index = () => {
     // },
   ];
 
-  const [data, setData] = useState([]);
+  const [blog, setBlog] = useState([]);
 
   useEffect(() => {
-    CrudController.home()
+    CrudController.getAllBlogs()
       .then((res) => {
+        console.log(res.data);
         if (res.data.status_code === 200) {
-          setData(res.data.categories);
-          console.log(data);
+          setBlog(res.data.categories);
+          console.log(blog);
         }
       })
       .catch((err) => {
@@ -26,13 +27,13 @@ const Index = () => {
       .finally(() => {
         console.log("finally");
       });
-  }, []);
+  }, [blog]);
 
   //   console.log(CrudController.home());
 
   return (
     <>
-      <ContentHeader name="Crud" breadcrumb={breadcrumb} />
+      <ContentHeader name="Blog" breadcrumb={breadcrumb} />
       {/* Main content */}
       <section className="content">
         <div className="container-fluid">
@@ -40,7 +41,7 @@ const Index = () => {
             <div className="col-12">
               <div className="card">
                 <div className="card-header">
-                  <h3 className="card-title">All Data</h3>
+                  <h3 className="card-title">All Blog</h3>
                 </div>
                 {/* /.card-header */}
                 <div className="card-body">
