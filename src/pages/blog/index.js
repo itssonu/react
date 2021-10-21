@@ -9,16 +9,12 @@ const Index = () => {
     //   url: "index",
     // },
   ];
-
-  const [blog, setBlog] = useState([]);
-
-  useEffect(() => {
+  const getAllBlogs = () => {
     CrudController.getAllBlogs()
       .then((res) => {
-        console.log(res.data);
         if (res.data.status_code === 200) {
-          setBlog(res.data.categories);
-          console.log(blog);
+          res = res.data.data;
+          setBlog(res);
         }
       })
       .catch((err) => {
@@ -27,7 +23,12 @@ const Index = () => {
       .finally(() => {
         console.log("finally");
       });
-  }, [blog]);
+  };
+  const [blog, setBlog] = useState([]);
+
+  useEffect(() => {
+    getAllBlogs();
+  }, []);
 
   //   console.log(CrudController.home());
 
@@ -52,29 +53,38 @@ const Index = () => {
                     <thead>
                       <tr>
                         <th>id</th>
-                        <th>Name</th>
-                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Slug</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {/* {data.map((v) => {
+                      {blog.map((v, k) => {
                         return (
-                          <tr>
-                            <td>1</td>
-                            <td>Internet Explorer 4.0</td>
-                            <td>Win 95+</td>
-                            <td>X</td>
+                          <tr key={v.id}>
+                            <td>{++k}</td>
+                            <td>{v.title}</td>
+                            <td>{v.slug}</td>
+                            <td>
+                              <a
+                                target="_blank"
+                                rel="noreferrer"
+                                href="https://dev.01s.in/dcad/dev/public/admin/product/show/9"
+                                className=""
+                              >
+                                <i className="text-primary far fa-eye"></i>
+                              </a>
+                            </td>
                           </tr>
                         );
-                      })} */}
+                      })}
                     </tbody>
                     <tfoot>
                       <tr>
-                        <th>3</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>CSS grade</th>
+                        <th>id</th>
+                        <th>Title</th>
+                        <th>Slug</th>
+                        <th>Action</th>
                       </tr>
                     </tfoot>
                   </table>

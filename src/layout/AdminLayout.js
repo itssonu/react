@@ -4,6 +4,9 @@ import Sidebar from "./Sidebar.js";
 import Preloader from "./Preloader.js";
 
 const AdminLayout = (props) => {
+  // const blogMenuClickHandler = () => {
+  // props.blogMenuClickHandler();
+  // };
   return (
     <>
       <div className="wrapper">

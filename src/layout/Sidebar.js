@@ -1,8 +1,13 @@
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   let match = useRouteMatch();
+
+  const blogMenuClickHandler = () => {
+    alert("click");
+    props.blogMenuClickHandler();
+  };
 
   return (
     <>
@@ -75,7 +80,11 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={`${match.path}/blog`}>
+                <Link
+                  className="nav-link"
+                  to={`${match.path}/blog`}
+                  onClick={blogMenuClickHandler}
+                >
                   <i className="nav-icon fas fa-th"></i>
                   Blog
                 </Link>
