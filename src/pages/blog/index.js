@@ -2,6 +2,8 @@ import ContentHeader from "../../layout/ContentHeader";
 import BlogController from "../../controller/BlogController";
 import { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const Index = (props) => {
   let match = useRouteMatch();
@@ -11,10 +13,29 @@ const Index = (props) => {
     //   url: "index",
     // },
   ];
+  const MySwal = withReactContent(Swal);
 
   const deleteBlog = (id) => {
-    props.deleteBlog(id);
-    getAllBlogs();
+    MySwal.fire({
+      title: "Do you want to delete?",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        // alert(id);
+        BlogController.deleteBlog(id).then((response) => {
+          if (response.data.status_code === 200) {
+            response = response.data;
+
+            MySwal.fire(response.result, "", "success");
+            setBlog(blog.filter((blog) => blog.id !== id));
+            // getAllBlogs();
+            // history.push("/admin/blog");
+          }
+        });
+      }
+    });
   };
 
   const editBlogHandler = (v) => {

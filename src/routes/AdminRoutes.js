@@ -41,26 +41,6 @@ const AdminRoutes = (props) => {
       });
   };
 
-  const deleteBlog = (id) => {
-    MySwal.fire({
-      title: "Do you want to delete?",
-      showCancelButton: true,
-      confirmButtonText: "Delete",
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        // alert(id);
-        BlogController.deleteBlog(id).then((response) => {
-          if (response.data.status_code === 200) {
-            response = response.data;
-            MySwal.fire(response.result, "", "success");
-            // history.push("/admin/blog");
-          }
-        });
-      }
-    });
-  };
-
   const editBlog = (value) => {
     console.log(value);
     BlogController.editBlog(value).then((response) => {
@@ -89,7 +69,7 @@ const AdminRoutes = (props) => {
           </Route>
           <Route path={`${path}/blog`} exact>
             <BlogIndex
-              deleteBlog={deleteBlog}
+              // deleteBlog={deleteBlog}
               editBlogHandler={editBlogHandler}
             />
           </Route>
