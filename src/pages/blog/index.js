@@ -14,6 +14,11 @@ const Index = (props) => {
 
   const deleteBlog = (id) => {
     props.deleteBlog(id);
+    getAllBlogs();
+  };
+
+  const editBlogHandler = (v) => {
+    props.editBlogHandler(v);
   };
 
   const getAllBlogs = () => {
@@ -76,14 +81,16 @@ const Index = (props) => {
                             <td>{v.title}</td>
                             <td>{v.slug}</td>
                             <td>
-                              <a
-                                target="_blank"
-                                rel="noreferrer"
-                                href="https://dev.01s.in/dcad/dev/public/admin/product/show/9"
+                              <Link
+                                // target="_blank"
+                                // rel="noreferrer"
+                                to={`${match.path}/edit`}
                                 className="mr-3"
+                                onClick={() => editBlogHandler(v)}
+                                // blog={v}
                               >
-                                <i className="text-primary far fa-eye"></i>
-                              </a>
+                                <i className="text-primary far fa-edit"></i>
+                              </Link>
 
                               {/* <Link className="mr-3" to={`${match.path}/add`}> */}
                               {/* <button
@@ -104,14 +111,14 @@ const Index = (props) => {
                         );
                       })}
                     </tbody>
-                    <tfoot>
+                    {/* <tfoot>
                       <tr>
                         <th>id</th>
                         <th>Title</th>
                         <th>Slug</th>
                         <th>Action</th>
                       </tr>
-                    </tfoot>
+                    </tfoot> */}
                   </table>
                 </div>
                 {/* /.card-body */}

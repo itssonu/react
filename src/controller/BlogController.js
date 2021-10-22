@@ -10,6 +10,9 @@ class BlogController {
   deleteBlog(blogId) {
     return http.delete("/blog/" + blogId);
   }
+  editBlog(postData) {
+    return http.post("/blog/", postData);
+  }
 }
 
 export default new BlogController();

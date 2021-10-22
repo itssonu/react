@@ -1,10 +1,14 @@
 import ContentHeader from "../../layout/ContentHeader";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
-const Add = (props) => {
-  const slugRef = useRef();
+const Edit = (props) => {
+  console.log(props);
+  const slugRef = useRef(props.blog.slug);
+
   const titleRef = useRef();
   const descriptionRef = useRef();
+
+  // console.log(slugRef);
 
   const breadcrumb = [
     // {
@@ -13,24 +17,25 @@ const Add = (props) => {
     // },
   ];
 
-  const addBlogFormHandler = (e) => {
+  const editBlogFormHandler = (e) => {
     e.preventDefault();
 
-    const addBlogFormData = {
+    const editBlogFormData = {
+      id: props.blog.id,
       title: titleRef.current.value,
       slug: slugRef.current.value,
       description: descriptionRef.current.value,
     };
 
-    props.addBlog(addBlogFormData);
-
-    titleRef.current.value = "";
-    slugRef.current.value = "";
-    descriptionRef.current.value = "";
+    props.editBlog(editBlogFormData);
   };
+
+  // useEffect(() => {
+  //   slugRef.current.value = props.blog.slug;
+  // }, []);
   return (
     <>
-      <ContentHeader name="Add Blog" breadcrumb={breadcrumb} />
+      <ContentHeader name="Edit Blog" breadcrumb={breadcrumb} />
       {/* Main content */}
       <section className="content">
         <div className="container-fluid">
@@ -46,7 +51,7 @@ const Add = (props) => {
                   </Link> */}
                 </div>
                 {/* /.card-header */}
-                <form method="post" onSubmit={addBlogFormHandler}>
+                <form method="post" onSubmit={editBlogFormHandler}>
                   <div className="card-body">
                     <div className="form-group">
                       <label htmlFor="title">Title</label>
@@ -56,6 +61,7 @@ const Add = (props) => {
                         id=""
                         placeholder="Enter Title"
                         ref={titleRef}
+                        defaultValue={props.blog.title}
                       />
                     </div>
 
@@ -65,6 +71,7 @@ const Add = (props) => {
                         type="text"
                         className="form-control"
                         placeholder="Enter slug"
+                        defaultValue={props.blog.slug}
                         ref={slugRef}
                       />
                     </div>
@@ -74,6 +81,7 @@ const Add = (props) => {
                         className="form-control"
                         name="description"
                         ref={descriptionRef}
+                        defaultValue={props.blog.description}
                       />
                     </div>
                   </div>
@@ -97,4 +105,4 @@ const Add = (props) => {
     </>
   );
 };
-export default Add;
+export default Edit;

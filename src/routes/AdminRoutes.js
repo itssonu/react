@@ -1,34 +1,43 @@
 import React from "react";
-import { Route, Switch, Redirect, useRouteMatch } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  useRouteMatch,
+  Redirect,
+  useHistory,
+} from "react-router-dom";
 import BlogIndex from "../pages/blog/index";
 import BlogAdd from "../pages/blog/Add";
+import BlogEdit from "../pages/blog/Edit";
 import BlogController from "../controller/BlogController";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-// import { useState } from "react";
+import { useState } from "react";
 
 const AdminRoutes = (props) => {
+  // console.log("admin routes", props);
   let { path } = useRouteMatch();
 
+  let history = useHistory();
+  console.log(history);
+
   // const [blogs, setBlogs] = useState([]);
+  const [blog, setBlog] = useState({});
 
   const MySwal = withReactContent(Swal);
 
   const addBlog = (postData) => {
     BlogController.addBlog(postData)
-      .then((res) => {
-        if (res.data.status_code === 200) {
-          res = res.data.data;
-          console.log(res);
-          MySwal.fire({
-            title: <strong>Good job!</strong>,
-            html: <i>You clicked the button!</i>,
-            icon: "success",
-          });
+      .then((response) => {
+        if (response.data.status_code === 200) {
+          response = response.data;
+          console.log(response);
+          MySwal.fire(response.result, "", "success");
+          history.goBack();
         }
       })
       .catch((err) => {
-        console.log("error");
+        console.log(err);
       });
   };
 
@@ -44,31 +53,30 @@ const AdminRoutes = (props) => {
         BlogController.deleteBlog(id).then((response) => {
           if (response.data.status_code === 200) {
             response = response.data;
-            console.log(response);
             MySwal.fire(response.result, "", "success");
+            // history.push("/admin/blog");
           }
         });
       }
     });
   };
 
-  // const getAllBlogs = () => {
-  //   BlogController.getAllBlogs()
-  //     .then((res) => {
-  //       if (res.data.status_code === 200) {
-  //         res = res.data.data;
-  //         // console.log(res);
-  //         setBlogs(res);
-  //         // return res;
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log("error");
-  //     })
-  //     .finally(() => {
-  //       // console.log("finally");
-  //     });
-  // };
+  const editBlog = (value) => {
+    console.log(value);
+    BlogController.editBlog(value).then((response) => {
+      if (response.data.status_code === 200) {
+        response = response.data;
+        console.log(response);
+        MySwal.fire(response.result, "", "success");
+        history.goBack();
+      }
+    });
+  };
+
+  const editBlogHandler = (v) => {
+    setBlog(v);
+  };
+
   return (
     <>
       <Switch>
@@ -76,8 +84,14 @@ const AdminRoutes = (props) => {
           <Route path={`${path}/blog/add`} exact>
             <BlogAdd addBlog={addBlog} />
           </Route>
+          <Route path={`${path}/blog/edit`} exact>
+            <BlogEdit blog={blog} editBlog={editBlog} />
+          </Route>
           <Route path={`${path}/blog`} exact>
-            <BlogIndex deleteBlog={deleteBlog} />
+            <BlogIndex
+              deleteBlog={deleteBlog}
+              editBlogHandler={editBlogHandler}
+            />
           </Route>
         </Route>
         <Route path={`${path}/dashboard`} exact>
