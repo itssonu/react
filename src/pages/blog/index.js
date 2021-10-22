@@ -72,7 +72,7 @@ const Index = (props) => {
                       {blog.map((v, k) => {
                         return (
                           <tr key={v.id}>
-                            <td>{++k}</td>
+                            <td>{v.id}</td>
                             <td>{v.title}</td>
                             <td>{v.slug}</td>
                             <td>

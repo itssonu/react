@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { Route, Switch, Redirect, useRouteMatch } from "react-router-dom";
 import BlogIndex from "../pages/blog/index";
 import BlogAdd from "../pages/blog/Add";
 import BlogController from "../controller/BlogController";
@@ -36,12 +36,18 @@ const AdminRoutes = (props) => {
     MySwal.fire({
       title: "Do you want to delete?",
       showCancelButton: true,
-      confirmButtonText: "Save",
+      confirmButtonText: "Delete",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        alert(id);
-        Swal.fire("Deleted Successfully", "", "success");
+        // alert(id);
+        BlogController.deleteBlog(id).then((response) => {
+          if (response.data.status_code === 200) {
+            response = response.data;
+            console.log(response);
+            MySwal.fire(response.result, "", "success");
+          }
+        });
       }
     });
   };

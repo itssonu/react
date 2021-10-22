@@ -7,6 +7,9 @@ class BlogController {
   addBlog(postData) {
     return http.post("/addBlog", postData);
   }
+  deleteBlog(blogId) {
+    return http.delete("/blog/" + blogId);
+  }
 }
 
 export default new BlogController();
