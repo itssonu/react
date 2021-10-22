@@ -12,6 +12,10 @@ const Index = (props) => {
     // },
   ];
 
+  const deleteBlog = (id) => {
+    props.deleteBlog(id);
+  };
+
   const getAllBlogs = () => {
     BlogController.getAllBlogs()
       .then((res) => {
@@ -32,12 +36,6 @@ const Index = (props) => {
   useEffect(() => {
     getAllBlogs();
   }, []);
-
-  //   console.log(CrudController.home());
-
-  if (props.isBlogMenuClicked) {
-    getAllBlogs();
-  }
 
   return (
     <>
@@ -82,10 +80,25 @@ const Index = (props) => {
                                 target="_blank"
                                 rel="noreferrer"
                                 href="https://dev.01s.in/dcad/dev/public/admin/product/show/9"
-                                className=""
+                                className="mr-3"
                               >
                                 <i className="text-primary far fa-eye"></i>
                               </a>
+
+                              {/* <Link className="mr-3" to={`${match.path}/add`}> */}
+                              {/* <button
+                                  type="button"
+                                  className="btn btn-success"
+                                > */}
+                              <i
+                                style={{ cursor: "pointer" }}
+                                className="text-danger far fa-trash-alt mr-3"
+                                onClick={() => {
+                                  deleteBlog(v.id);
+                                }}
+                              ></i>
+                              {/* </button> */}
+                              {/* </Link> */}
                             </td>
                           </tr>
                         );
