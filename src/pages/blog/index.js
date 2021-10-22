@@ -1,5 +1,5 @@
 import ContentHeader from "../../layout/ContentHeader";
-import BlogController from "../../controller/CrudController";
+import BlogController from "../../controller/BlogController";
 import { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import BlogIndex from "../pages/blog/index";
 import BlogAdd from "../pages/blog/Add";
-import BlogController from "../controller/CrudController";
+import BlogController from "../controller/BlogController";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 // import { useState } from "react";
