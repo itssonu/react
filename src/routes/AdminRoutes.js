@@ -19,7 +19,7 @@ const AdminRoutes = (props) => {
   let { path } = useRouteMatch();
 
   let history = useHistory();
-  console.log(history);
+  // console.log(history);
 
   // const [blogs, setBlogs] = useState([]);
   const [blog, setBlog] = useState({});

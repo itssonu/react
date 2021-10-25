@@ -1,11 +1,16 @@
 import ContentHeader from "../../layout/ContentHeader";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Add = (props) => {
   const slugRef = useRef();
   const titleRef = useRef();
   const descriptionRef = useRef();
-
+  const [errors, setErrors] = useState({
+    slug: "",
+    title: "",
+    description: "",
+  });
+  // console.log([title]);
   const breadcrumb = [
     // {
     //   title: "index",
@@ -15,6 +20,8 @@ const Add = (props) => {
 
   const addBlogFormHandler = (e) => {
     e.preventDefault();
+
+    //validate o submit
 
     const addBlogFormData = {
       title: titleRef.current.value,
@@ -27,6 +34,64 @@ const Add = (props) => {
     titleRef.current.value = "";
     slugRef.current.value = "";
     descriptionRef.current.value = "";
+  };
+
+  //validate form
+  const validateCmsAddForm = (e) => {
+    let name = e.target.name;
+    let value = eval(name + "Ref").current.value;
+
+    console.log(name, value);
+    switch (name) {
+      case "title":
+        // alert(title);
+        if (value.length == 0) {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "title is required",
+          }));
+        } else {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "",
+          }));
+        }
+
+        break;
+
+      case "description":
+        // alert(value.length);
+        if (value.length == 0) {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "description is required",
+          }));
+        } else {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "",
+          }));
+        }
+
+        break;
+      case "slug":
+        // alert(value.length);
+        if (value.length == 0) {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "slug is required",
+          }));
+        } else {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "",
+          }));
+        }
+
+        break;
+
+      default:
+    }
   };
   return (
     <>
@@ -52,29 +117,52 @@ const Add = (props) => {
                       <label htmlFor="title">Title</label>
                       <input
                         type="text"
-                        className="form-control"
+                        name="title"
+                        onChange={validateCmsAddForm}
+                        className={`form-control ${
+                          errors.title.length > 0 && "is-invalid"
+                        }`}
                         id=""
                         placeholder="Enter Title"
                         ref={titleRef}
                       />
+                      {errors.title.length > 0 && (
+                        <span className="invalid-feedback">{errors.title}</span>
+                      )}
                     </div>
 
                     <div className="form-group">
                       <label>Slug</label>
                       <input
                         type="text"
-                        className="form-control"
+                        name="slug"
+                        onChange={validateCmsAddForm}
+                        className={`form-control ${
+                          errors.slug.length > 0 && "is-invalid"
+                        }`}
                         placeholder="Enter slug"
                         ref={slugRef}
                       />
+                      {errors.slug.length > 0 && (
+                        <span className="invalid-feedback">{errors.slug}</span>
+                      )}
                     </div>
                     <div className="form-group">
                       <label>Description :</label>
                       <textarea
-                        className="form-control"
+                        name="description"
+                        onChange={validateCmsAddForm}
+                        className={`form-control ${
+                          errors.description.length > 0 && "is-invalid"
+                        }`}
                         name="description"
                         ref={descriptionRef}
                       />
+                      {errors.description.length > 0 && (
+                        <span className="invalid-feedback">
+                          {errors.description}
+                        </span>
+                      )}
                     </div>
                   </div>
                   {/* /.card-body */}
