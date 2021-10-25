@@ -1,12 +1,17 @@
 import ContentHeader from "../../layout/ContentHeader";
-import { useRef, useEffect } from "react";
+import { useRef, useState } from "react";
 
 const Edit = (props) => {
   console.log(props);
   const slugRef = useRef(props.blog.slug);
-
   const titleRef = useRef();
   const descriptionRef = useRef();
+
+  const [errors, setErrors] = useState({
+    slug: "",
+    title: "",
+    description: "",
+  });
 
   // console.log(slugRef);
 
@@ -19,15 +24,119 @@ const Edit = (props) => {
 
   const editBlogFormHandler = (e) => {
     e.preventDefault();
+    if (validateForm(errors)) {
+      const editBlogFormData = {
+        id: props.blog.id,
+        title: titleRef.current.value,
+        slug: slugRef.current.value,
+        description: descriptionRef.current.value,
+      };
 
-    const editBlogFormData = {
-      id: props.blog.id,
-      title: titleRef.current.value,
-      slug: slugRef.current.value,
-      description: descriptionRef.current.value,
-    };
+      props.editBlog(editBlogFormData);
+    } else {
+      console.error("Invalid Form");
+    }
+  };
 
-    props.editBlog(editBlogFormData);
+  //validate form
+  const formChangeHandler = (e) => {
+    let name = e.target.name;
+    let value = eval(name + "Ref").current.value;
+
+    // console.log(name, value);
+    switch (name) {
+      case "title":
+        // alert(title);
+        if (value.length == 0) {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "title is required",
+          }));
+        } else {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "",
+          }));
+        }
+
+        break;
+
+      case "description":
+        // alert(value.length);
+        if (value.length == 0) {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "description is required",
+          }));
+        } else {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "",
+          }));
+        }
+
+        break;
+      case "slug":
+        // alert(value.length);
+        if (value.length == 0) {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "slug is required",
+          }));
+        } else {
+          setErrors((prevState) => ({
+            ...prevState,
+            [name]: "",
+          }));
+        }
+
+        break;
+
+      default:
+    }
+  };
+
+  const validateForm = () => {
+    let valid = true;
+    // {
+    //   Object.keys(errors).forEach((val) => {
+    //     let key = val;
+    //     let value = errors[key];
+    //     console.log(`${key} : ${value}`);
+    //   });
+    //   return valid;
+    // }
+    {
+      if (titleRef.current.value.length < 1) {
+        valid = false;
+        setErrors((prevState) => ({
+          ...prevState,
+          ["title"]: "title is required",
+        }));
+      }
+    }
+
+    {
+      if (slugRef.current.value.length < 1) {
+        valid = false;
+        setErrors((prevState) => ({
+          ...prevState,
+          ["slug"]: "slug is required",
+        }));
+      }
+    }
+
+    {
+      if (descriptionRef.current.value.length < 1) {
+        valid = false;
+        setErrors((prevState) => ({
+          ...prevState,
+          ["description"]: "description is required",
+        }));
+      }
+    }
+
+    return valid;
   };
 
   // useEffect(() => {
@@ -57,32 +166,54 @@ const Edit = (props) => {
                       <label htmlFor="title">Title</label>
                       <input
                         type="text"
-                        className="form-control"
+                        name="title"
+                        onChange={formChangeHandler}
+                        className={`form-control ${
+                          errors.title.length > 0 && "is-invalid"
+                        }`}
                         id=""
                         placeholder="Enter Title"
                         ref={titleRef}
                         defaultValue={props.blog.title}
                       />
+                      {errors.title.length > 0 && (
+                        <span className="invalid-feedback">{errors.title}</span>
+                      )}
                     </div>
 
                     <div className="form-group">
                       <label>Slug</label>
                       <input
                         type="text"
-                        className="form-control"
+                        name="slug"
+                        onChange={formChangeHandler}
+                        className={`form-control ${
+                          errors.slug.length > 0 && "is-invalid"
+                        }`}
                         placeholder="Enter slug"
                         defaultValue={props.blog.slug}
                         ref={slugRef}
                       />
+                      {errors.slug.length > 0 && (
+                        <span className="invalid-feedback">{errors.slug}</span>
+                      )}
                     </div>
                     <div className="form-group">
                       <label>Description :</label>
                       <textarea
-                        className="form-control"
+                        onChange={formChangeHandler}
+                        className={`form-control ${
+                          errors.description.length > 0 && "is-invalid"
+                        }`}
                         name="description"
                         ref={descriptionRef}
                         defaultValue={props.blog.description}
                       />
+                      {errors.description.length > 0 && (
+                        <span className="invalid-feedback">
+                          {errors.description}
+                        </span>
+                      )}
                     </div>
                   </div>
                   {/* /.card-body */}

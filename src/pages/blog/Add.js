@@ -23,6 +23,7 @@ const Add = (props) => {
 
     //validate o submit
     // console.log(validateForm(errors));
+    // return false;
 
     if (validateForm(errors)) {
       const addBlogFormData = {
@@ -99,15 +100,44 @@ const Add = (props) => {
     }
   };
 
-  const validateForm = (errors) => {
+  const validateForm = () => {
     let valid = true;
+    // {
+    //   Object.keys(errors).forEach((val) => {
+    //     let key = val;
+    //     let value = errors[key];
+    //     console.log(`${key} : ${value}`);
+    //   });
+    //   return valid;
+    // }
+    {
+      if (titleRef.current.value.length < 1) {
+        valid = false;
+        setErrors((prevState) => ({
+          ...prevState,
+          ["title"]: "title is required",
+        }));
+      }
+    }
 
-    if (
-      titleRef.current.value.length == 0 ||
-      slugRef.current.value.length == 0 ||
-      descriptionRef.current.value.length == 0
-    ) {
-      valid = false;
+    {
+      if (slugRef.current.value.length < 1) {
+        valid = false;
+        setErrors((prevState) => ({
+          ...prevState,
+          ["slug"]: "slug is required",
+        }));
+      }
+    }
+
+    {
+      if (descriptionRef.current.value.length < 1) {
+        valid = false;
+        setErrors((prevState) => ({
+          ...prevState,
+          ["description"]: "description is required",
+        }));
+      }
     }
 
     return valid;
