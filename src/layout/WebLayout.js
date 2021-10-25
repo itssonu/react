@@ -43,6 +43,11 @@ export default function WebLayout(props) {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
             {menu.map((v, k) => {
               return (
                 <li className="nav-item active" key={"menuList" + k}>
