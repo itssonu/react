@@ -4,6 +4,9 @@ class BlogController {
   getAllBlogs() {
     return http.get("/blogs");
   }
+  findBlogBySlug(slug) {
+    return http.get("/findBlogBySlug/" + slug);
+  }
   addBlog(postData) {
     return http.post("/addBlog", postData);
   }
