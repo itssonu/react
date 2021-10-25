@@ -22,26 +22,31 @@ const Add = (props) => {
     e.preventDefault();
 
     //validate o submit
+    // console.log(validateForm(errors));
 
-    const addBlogFormData = {
-      title: titleRef.current.value,
-      slug: slugRef.current.value,
-      description: descriptionRef.current.value,
-    };
+    if (validateForm(errors)) {
+      const addBlogFormData = {
+        title: titleRef.current.value,
+        slug: slugRef.current.value,
+        description: descriptionRef.current.value,
+      };
 
-    props.addBlog(addBlogFormData);
+      props.addBlog(addBlogFormData);
 
-    titleRef.current.value = "";
-    slugRef.current.value = "";
-    descriptionRef.current.value = "";
+      titleRef.current.value = "";
+      slugRef.current.value = "";
+      descriptionRef.current.value = "";
+    } else {
+      console.error("Invalid Form");
+    }
   };
 
   //validate form
-  const validateCmsAddForm = (e) => {
+  const formChangeHandler = (e) => {
     let name = e.target.name;
     let value = eval(name + "Ref").current.value;
 
-    console.log(name, value);
+    // console.log(name, value);
     switch (name) {
       case "title":
         // alert(title);
@@ -93,6 +98,20 @@ const Add = (props) => {
       default:
     }
   };
+
+  const validateForm = (errors) => {
+    let valid = true;
+
+    if (
+      titleRef.current.value.length == 0 ||
+      slugRef.current.value.length == 0 ||
+      descriptionRef.current.value.length == 0
+    ) {
+      valid = false;
+    }
+
+    return valid;
+  };
   return (
     <>
       <ContentHeader name="Add Blog" breadcrumb={breadcrumb} />
@@ -118,7 +137,7 @@ const Add = (props) => {
                       <input
                         type="text"
                         name="title"
-                        onChange={validateCmsAddForm}
+                        onChange={formChangeHandler}
                         className={`form-control ${
                           errors.title.length > 0 && "is-invalid"
                         }`}
@@ -136,7 +155,7 @@ const Add = (props) => {
                       <input
                         type="text"
                         name="slug"
-                        onChange={validateCmsAddForm}
+                        onChange={formChangeHandler}
                         className={`form-control ${
                           errors.slug.length > 0 && "is-invalid"
                         }`}
@@ -151,7 +170,7 @@ const Add = (props) => {
                       <label>Description :</label>
                       <textarea
                         name="description"
-                        onChange={validateCmsAddForm}
+                        onChange={formChangeHandler}
                         className={`form-control ${
                           errors.description.length > 0 && "is-invalid"
                         }`}
