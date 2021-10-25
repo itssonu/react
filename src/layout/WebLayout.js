@@ -52,6 +52,11 @@ export default function WebLayout(props) {
                 </li>
               );
             })}
+            <li className="nav-item active">
+              <Link className="nav-link" to={`${match.url}admin`}>
+                admin
+              </Link>
+            </li>
           </ul>
           {/* <form className="form-inline my-2 my-lg-0">
             <input

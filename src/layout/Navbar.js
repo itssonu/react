@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -17,12 +18,12 @@ const Navbar = () => {
               <i className="fas fa-bars" />
             </a>
           </li>
-          {/* <li className="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" className="nav-link">
-              Home
-            </a>
-          </li>
           <li className="nav-item d-none d-sm-inline-block">
+            <Link className="nav-link" to="/">
+              Web
+            </Link>
+          </li>
+          {/* <li className="nav-item d-none d-sm-inline-block">
             <a href="fake_url" className="nav-link">
               Contact
             </a>

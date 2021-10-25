@@ -8,7 +8,7 @@ const AdminLayout = (props) => {
     <>
       <div className="wrapper">
         {/* Preloader */}
-        <Preloader />
+        {/* <Preloader /> */}
         {/* Navbar */}
         <Navbar />
         {/* /.navbar */}
