@@ -6,14 +6,11 @@ import AdminRoutes from "./AdminRoutes.js";
 import WebRoutes from "./WebRoutes.js";
 
 const Routes = () => {
-  const blogMenuClickHandler = (props) => {
-    console.log("onrotes");
-  };
   return (
     <>
       <Switch>
         <Route path="/admin">
-          <AdminLayout blogMenuClickHandler={blogMenuClickHandler}>
+          <AdminLayout>
             <AdminRoutes />
           </AdminLayout>
         </Route>

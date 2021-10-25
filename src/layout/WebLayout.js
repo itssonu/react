@@ -54,7 +54,7 @@ export default function WebLayout(props) {
             })}
             <li className="nav-item active">
               <Link className="nav-link" to={`${match.url}admin`}>
-                admin
+                Admin
               </Link>
             </li>
           </ul>
