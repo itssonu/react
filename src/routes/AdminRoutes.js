@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Switch,
-  useRouteMatch,
-  Redirect,
-  useHistory,
-} from "react-router-dom";
+import { Route, Switch, useRouteMatch, useHistory } from "react-router-dom";
 import BlogIndex from "../pages/blog/index";
 import BlogAdd from "../pages/blog/Add";
 import BlogEdit from "../pages/blog/Edit";
@@ -31,22 +25,22 @@ const AdminRoutes = (props) => {
       .then((response) => {
         if (response.data.status_code === 200) {
           response = response.data;
-          console.log(response);
+          // console.log(response);
           MySwal.fire(response.result, "", "success");
           history.goBack();
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   };
 
   const editBlog = (value) => {
-    console.log(value);
+    // console.log(value);
     BlogController.editBlog(value).then((response) => {
       if (response.data.status_code === 200) {
         response = response.data;
-        console.log(response);
+        // console.log(response);
         MySwal.fire(response.result, "", "success");
         history.goBack();
       }

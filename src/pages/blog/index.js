@@ -51,10 +51,10 @@ const Index = (props) => {
         }
       })
       .catch((err) => {
-        console.log("error");
+        console.error(err);
       })
       .finally(() => {
-        console.log("finally");
+        // console.log("finally");
       });
   };
   const [blog, setBlog] = useState([]);

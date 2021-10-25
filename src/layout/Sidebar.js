@@ -4,12 +4,6 @@ import { Link, useRouteMatch } from "react-router-dom";
 const Sidebar = (props) => {
   let match = useRouteMatch();
 
-  const blogMenuClickHandler = () => {
-    console.log("blog menu clicked at sidebar");
-    // alert("click");
-    props.blogMenuClickHandler();
-  };
-
   return (
     <>
       <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -81,11 +75,7 @@ const Sidebar = (props) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  to={`${match.path}/blog`}
-                  onClick={blogMenuClickHandler}
-                >
+                <Link className="nav-link" to={`${match.path}/blog`}>
                   <i className="nav-icon fas fa-th"></i>
                   Blog
                 </Link>

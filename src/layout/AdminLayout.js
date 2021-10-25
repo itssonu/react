@@ -4,9 +4,6 @@ import Sidebar from "./Sidebar.js";
 import Preloader from "./Preloader.js";
 
 const AdminLayout = (props) => {
-  const blogMenuClickHandler = () => {
-    props.blogMenuClickHandler();
-  };
   return (
     <>
       <div className="wrapper">
@@ -16,7 +13,7 @@ const AdminLayout = (props) => {
         <Navbar />
         {/* /.navbar */}
         {/* Main Sidebar Container */}
-        <Sidebar blogMenuClickHandler={blogMenuClickHandler} />
+        <Sidebar />
         {/* Content Wrapper. Contains page content */}
         <div className="content-wrapper">{props.children}</div>
         {/* /.content-wrapper */}

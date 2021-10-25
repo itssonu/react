@@ -51,7 +51,7 @@ const Add = (props) => {
     switch (name) {
       case "title":
         // alert(title);
-        if (value.length == 0) {
+        if (value.length === 0) {
           setErrors((prevState) => ({
             ...prevState,
             [name]: "title is required",
@@ -67,7 +67,7 @@ const Add = (props) => {
 
       case "description":
         // alert(value.length);
-        if (value.length == 0) {
+        if (value.length === 0) {
           setErrors((prevState) => ({
             ...prevState,
             [name]: "description is required",
@@ -82,7 +82,7 @@ const Add = (props) => {
         break;
       case "slug":
         // alert(value.length);
-        if (value.length == 0) {
+        if (value.length === 0) {
           setErrors((prevState) => ({
             ...prevState,
             [name]: "slug is required",
@@ -110,34 +110,29 @@ const Add = (props) => {
     //   });
     //   return valid;
     // }
-    {
-      if (titleRef.current.value.length < 1) {
-        valid = false;
-        setErrors((prevState) => ({
-          ...prevState,
-          ["title"]: "title is required",
-        }));
-      }
+
+    if (titleRef.current.value.length < 1) {
+      valid = false;
+      setErrors((prevState) => ({
+        ...prevState,
+        title: "title is required",
+      }));
     }
 
-    {
-      if (slugRef.current.value.length < 1) {
-        valid = false;
-        setErrors((prevState) => ({
-          ...prevState,
-          ["slug"]: "slug is required",
-        }));
-      }
+    if (slugRef.current.value.length < 1) {
+      valid = false;
+      setErrors((prevState) => ({
+        ...prevState,
+        slug: "slug is required",
+      }));
     }
 
-    {
-      if (descriptionRef.current.value.length < 1) {
-        valid = false;
-        setErrors((prevState) => ({
-          ...prevState,
-          ["description"]: "description is required",
-        }));
-      }
+    if (descriptionRef.current.value.length < 1) {
+      valid = false;
+      setErrors((prevState) => ({
+        ...prevState,
+        description: "description is required",
+      }));
     }
 
     return valid;
@@ -204,7 +199,6 @@ const Add = (props) => {
                         className={`form-control ${
                           errors.description.length > 0 && "is-invalid"
                         }`}
-                        name="description"
                         ref={descriptionRef}
                       />
                       {errors.description.length > 0 && (
