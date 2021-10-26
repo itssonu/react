@@ -10,9 +10,13 @@ const WebRoutes = (props) => {
   return (
     <>
       <Switch>
-        <Route path="/:slug" children={<Content />} />
-        {/* <Content /> */}
-        {/* </Route> */}
+        <Route
+          path="/:slug"
+          //  children={<Content />}
+        >
+          <Content />
+          {/* <h1>xsaxsacsacx</h1> */}
+        </Route>
         <Route path="/">
           <h1>home</h1>
         </Route>

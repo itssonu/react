@@ -45,14 +45,14 @@ export default function WebLayout(props) {
           <ul className="navbar-nav mr-auto">
             {menu.map((v, k) => {
               return (
-                <li className="nav-item active" key={"menuList" + k}>
-                  <Link className="nav-link" to={`${match.url}${v.slug}`}>
+                <li className="nav-item" key={"menuList" + k}>
+                  <Link className="nav-link" to={`${v.slug}`}>
                     {v.title}
                   </Link>
                 </li>
               );
             })}
-            <li className="nav-item active">
+            <li className="nav-item">
               <Link className="nav-link" to={`${match.url}admin`}>
                 Admin
               </Link>

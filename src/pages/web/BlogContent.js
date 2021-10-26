@@ -24,6 +24,7 @@ export default function BlogContent() {
   };
   useEffect(() => {
     getBlog();
-  }, []);
+  }, [params.slug]);
+
   return <>{description}</>;
 }
