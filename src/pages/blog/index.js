@@ -1,11 +1,9 @@
 import React from "react";
 import ContentHeader from "../../layout/ContentHeader";
 import BlogController from "../../controller/BlogController";
-import { useEffect, useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { render } from "@testing-library/react";
 
 class Index extends React.Component {
   // useEffect(() => {
@@ -77,7 +75,7 @@ class Index extends React.Component {
 
   render() {
     const { match } = this.props;
-
+    console.log(this.props);
     const breadcrumb = [
       // {
       //   title: "index",
