@@ -1,7 +1,10 @@
 import Routes from "./routes/Routes.js";
+import React from "react";
 
-function App() {
-  return <Routes />;
+class App extends React.Component {
+  render() {
+    return <Routes />;
+  }
 }
 
 export default App;
