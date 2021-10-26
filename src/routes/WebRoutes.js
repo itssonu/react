@@ -1,8 +1,7 @@
 import React from "react";
-import { Route, Switch, useParams } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Content from "../pages/web/BlogContent";
-import BlogController from "../controller/BlogController";
 
 const WebRoutes = (props) => {
   // return <h3>Requested topic ID:</h3>;

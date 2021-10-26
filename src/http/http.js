@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const url =
-  window.location.protocol +
-  "://" +
-  window.location.hostname +
-  "::" +
-  window.location.port;
+// const url =
+//   window.location.protocol +
+//   "://" +
+//   window.location.hostname +
+//   "::" +
+//   window.location.port;
 export default axios.create({
   baseURL: "http://127.0.0.1:8000/api/",
   headers: {
