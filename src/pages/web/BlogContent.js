@@ -26,5 +26,5 @@ export default function BlogContent() {
     getBlog(params.slug);
   }, [params.slug]);
 
-  return <>{description}</>;
+  return <> <h1> {description} </h1></>;
 }
